@@ -19,6 +19,8 @@ services:
         build: 
             context: ./server
             dockerfile: ./Dockerfile
+        ports:
+            - 80:5000
         volumes: 
             - "./server:/build/server"
         depends_on: 
