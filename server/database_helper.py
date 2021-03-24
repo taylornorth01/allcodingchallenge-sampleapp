@@ -11,7 +11,7 @@ class Database:
             database="uu_code_challenge",
             auth_plugin = 'mysql_native_password'
         )
-        self.cursor = self.con.cursor()
+        self.cursor = self.con.cursor(dictionary=True)
 
     def fetch_all(self, query_sql):
         self.cursor.execute(query_sql)
