@@ -1,9 +1,12 @@
 # Allstate UU Coding Challenge - Sample App
 
-![AllState](img/ani_hands_logo.png)
+![AllState](./img/ani_hands_logo.png)
 
 ## Welcome to the Allstate Coding Challenge
 
+### Problem Statement
+
+An IT company with over 10,000 employees has asked your consultancy firm for help with finding actionable insights in a recent employee study. Since the start of the Covid-19 pandemic they have asked a select group of employees to provide a weekly diary of exercise, home video call, sleep and work times. The task is to create a dashboard to highlight certain changes that could be contributing to poor mental health. Your firm will develop a range of metrics and recommendations for the study group employees. This will help the IT company inform future internal mental health policies. The company has asked that you use React to create this application and have provided you with a dataset from the study.  Your firm will present a demo of the application at the end of the Hackathon.
 
 ## Prerequisites
 You should have been provided with the "Get ready guide!" before the session.  You can also
@@ -46,10 +49,10 @@ docker-compose up
 2.  The first time the images are pulled from DockerHub can take several minutes, please
 be patient
 3.  A database will be created and populated with sample data
-4.  Flask and other requirements will be installed. See [requirements.txt](requirements.txt)
+4.  Flask and other requirements will be installed. See [requirements.txt](./server/requirements.txt)
 5.  The application will be running at [http://localhost:8080](http://localhost:8080)
-6.  If you have mySQL running locally, you may need to stop or kill it as the docker image
-uses the default port (see Troubleshooting guide)
+6.  If you have MySQL running locally, you may need to stop or kill it as the docker image
+uses the default port (see [Troubleshooting guide](./Troubleshooting.md))
 
 #### Stop the application
  
