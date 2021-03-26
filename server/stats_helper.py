@@ -7,12 +7,17 @@ class StatsHelper():
         self.database = Database()
         print("Stats Helping initialising!")
 
-    def calculate_ave_overall_rating(self):
-        result = self.database.fetch_one("SELECT AVG(review_overall) FROM reviews")
-        return result[0]
+    def select_all_employee(self):
+        result = self.database.fetch_all("SELECT * FROM employeedata")
+        return result
 
     def select_all(self):
-        result = self.database.fetch_all("SELECT * FROM reviews")
+        result = self.database.fetch_all("SELECT * FROM dayroutine limit 0,7")
+        return result
+
+
+    def join_all(self):
+        result = self.database.fetch_all("SELECT * FROM dayroutine as a left join employeedata b on a.employee_id = b.employee_id")
         return result
 
     # HINT: You can define more queries here, along with some python logic to calculate!
