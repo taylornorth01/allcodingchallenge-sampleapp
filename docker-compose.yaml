@@ -12,7 +12,7 @@ services:
             - "./web:/build/web"
             - "/build/web/node_modules"
         depends_on: 
-            - server
+            - db
         command: ["npm", "start"]
 
     server:
@@ -20,11 +20,11 @@ services:
             context: ./server
             dockerfile: ./Dockerfile
         ports:
-            - 80:5000
+            - 5000:5000
         volumes: 
             - "./server:/build/server"
         depends_on: 
-            - db
+            - web
         command: ["python", "/build/server/application.py"]
     
     db:
