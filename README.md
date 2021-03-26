@@ -1,6 +1,6 @@
 # Allstate UU Coding Challenge - Sample App
 
-![AllState](./img/ani_hands_logo.png)
+![AllState](./img/9A9F5914-64CC-4660-AA17-EFC157196FC8_1_105_c.jpeg)
 
 ## Welcome to the Allstate Coding Challenge
 
