@@ -63,3 +63,33 @@ uses the default port (see [Troubleshooting guide](./Troubleshooting.md))
  ```
 docker-compose down
  ```
+
+### Useful Information
+
+ The application within docker is split into 3 sections:
+ 
+1. Web
+2. Server 
+3. DB
+ 
+ #### Web
+ #### http://localhost:8080/
+ The web secion houses a React application. Within react App.js is the place where most of the components are placed. The components use a library called     Material UI. This offers a quick way of sourcing react components and they have many that will suit basic web development purposes. The React app also uses funtional components and hooks. The two main hooks on offer  are useEffect and useState. The components also receive data using 'props', this originates from the parent component. You can organise the data using javascript functions and display it in the component. The React app uses the Axios library to query the Python/ Flask back-end.
+ #### https://material-ui.com/components/selects/
+ #### https://reactjs.org/docs/hooks-intro.html
+ 
+  #### Server
+  #### http://localhost:5000/
+  The server is a Python Flask server runs a back-end  API service that fetch and the SQL from the MySQL db and send back a response available that is ultmately   used by the React app. The db queries are found in stats_helper.py and the different Flask routes are displayed in application.py. Feel free to create your own routes. 
+  
+  #### DB
+ The project data is stored in a MySQL database. The database contains two tables:
+ 1) dayroutine - this contains the activities of each employees over a 12 month period
+ 2) employeedata - this is a reference table and provides details on each employee
+ 
+ 
+ 
+ 
+ 
+ 
+ 
