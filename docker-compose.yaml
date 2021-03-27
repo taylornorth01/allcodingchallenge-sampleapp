@@ -25,7 +25,7 @@ services:
             - "./server:/build/server"
         depends_on: 
             - web
-        command: ["python", "/build/server/application.py"]
+        command: ["python", "application.py"]
     
     db:
         image: "mysql:8.0"
