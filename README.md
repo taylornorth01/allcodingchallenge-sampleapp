@@ -82,8 +82,7 @@ be patient
 5.  The application will be running at [http://localhost:8080](http://localhost:8080)
 6.  If you have MySQL running locally, you may need to stop or kill it as the docker image
 uses the default port (see [Troubleshooting guide](./Troubleshooting.md))
-7. You may have issues installing Docker on Windows, check https://docs.docker.com/docker-for-windows/install/
-for details
+
 
 #### Stop the application
  
