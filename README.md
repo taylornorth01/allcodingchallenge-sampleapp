@@ -30,8 +30,7 @@ reaching targets
 - The dashboard will show the individual recommendations
 
 ## :white_check_mark: Prerequisites
-You should have been provided with the "Get ready guide!" before the session.  You can also
-download it from here.  If you have any issues, check the troubleshooting guide or ask for
+If you have any issues, check the troubleshooting guide or ask for
 help in the slack channel.  Please ensure you have the following:
 
 1.  GitHub account (you will also need Git installed on your machine)
