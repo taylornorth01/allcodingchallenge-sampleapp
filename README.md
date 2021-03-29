@@ -30,7 +30,7 @@ reaching targets
 - The dashboard will show the individual recommendations
 
 ## :white_check_mark: Prerequisites
-If you have any issues, check the troubleshooting guide or ask for
+If you have any issues ask for
 help in the slack channel.  Please ensure you have the following:
 
 1.  GitHub account (you will also need Git installed on your machine)
