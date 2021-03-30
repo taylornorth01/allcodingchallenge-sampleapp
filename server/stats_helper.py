@@ -24,6 +24,15 @@ class StatsHelper():
         result = self.database.fetch_all("SELECT * FROM dayroutine ORDER BY exercise_time ASC")
         return result
 
+    def desc_exercise(self):
+        result = self.database.fetch_all("SELECT * FROM dayroutine ORDER BY exercise_time DESC")
+        return result
+
+    def total_records(self):
+        result = self.database.fetch_all("SELECT * FROM dayroutine")
+        return len(result)
+    
+
     # HINT: You can define more queries here, along with some python logic to calculate!
     def calculate_another_stat(self):
       # all_rows = self.database.fetch_all("")

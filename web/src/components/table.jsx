@@ -6,6 +6,9 @@ import TableCell from '@material-ui/core/TableCell';
 import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 
+import ArrowDropDownIcon from '@material-ui/icons/ArrowDropDown';
+import ArrowDropUpIcon from '@material-ui/icons/ArrowDropUp';
+
 import axios from 'axios';
 
 const useStyles = makeStyles({
@@ -16,7 +19,7 @@ const useStyles = makeStyles({
   },
 });
 
-export function BasicTable(props) {
+export function BasicTable() {
   const classes = useStyles();
 
   const [table, setTable] = useState([])
@@ -33,7 +36,8 @@ export function BasicTable(props) {
         },
         responseType: 'json',
         })
-   
+    
+        
       setTable(result.data)
       console.log(table)
       setTableLoad(true);
@@ -49,7 +53,7 @@ export function BasicTable(props) {
       },
       responseType: 'json',
       })
- 
+      setTable()
     setTable(result.data)
     console.log(table)
     setTableLoad(true);
@@ -87,10 +91,25 @@ export function BasicTable(props) {
     else { return loading() }
   }
 
-  const desc = () => {
-    console.log('clicked')
+  const getAsc = () => {
     getData('http://localhost:5000/asc_exercise');
   }
+
+  const asc = () => {
+      return (
+        <a onClick={getAsc}><ArrowDropDownIcon></ArrowDropDownIcon></a>
+      );
+  }
+
+  const getDesc = () => {
+    getData('http://localhost:5000/desc_exercise');
+  }
+
+  const desc = () => {
+    return (
+      <a onClick={getDesc}><ArrowDropUpIcon></ArrowDropUpIcon></a>
+    );
+}
 
 
   return (
@@ -99,7 +118,7 @@ export function BasicTable(props) {
       <TableHead>
         <TableRow>
           <TableCell>Employee ID</TableCell>
-          <TableCell align="right"><a onClick={desc}>desc</a>Exercise time</TableCell>
+          <TableCell align="right">{asc()}{desc()}Exercise time</TableCell>
           <TableCell align="right">Sleep</TableCell>
           <TableCell align="right">Social</TableCell>
           <TableCell align="right">work_time</TableCell>

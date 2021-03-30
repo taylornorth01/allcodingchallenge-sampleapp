@@ -27,6 +27,14 @@ def alldata():
 def asc_exercise():
     return json.dumps(stats_helper.asc_exercise())
 
+@app.route('/desc_exercise')
+def desc_exercise():
+    return json.dumps(stats_helper.desc_exercise())
+
+@app.route('/total_records')
+def total_records():
+    return json.dumps(stats_helper.total_records())
+
 
 print("### Application started...")
 
