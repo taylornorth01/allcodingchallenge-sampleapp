@@ -32,6 +32,10 @@ class StatsHelper():
         result = self.database.fetch_all(f"SELECT * FROM dayroutine ORDER BY exercise_time DESC")
         return result
 
+    def asc_exercise_pag(self, amount, page):
+        result = self.database.fetch_all(f"SELECT * FROM dayroutine ORDER BY exercise_time ASC LIMIT {amount} OFFSET {amount * page}")
+        return result
+
     def total_records(self):
         result = self.database.fetch_all("SELECT * FROM dayroutine")
         return len(result)

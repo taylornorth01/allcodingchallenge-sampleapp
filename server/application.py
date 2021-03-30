@@ -29,7 +29,11 @@ def asc_exercise():
 
 @app.route('/desc_exercise_pag/<int:page_num>')
 def desc_exercise_pag(page_num):
-    return json.dumps(stats_helper.desc_exercise_pag(8, page_num))
+    return json.dumps(stats_helper.desc_exercise_pag(7, page_num))
+
+@app.route('/asc_exercise_pag/<int:page_num>')
+def asc_exercise_pag(page_num):
+    return json.dumps(stats_helper.asc_exercise_pag(7, page_num))
 
 @app.route('/desc_exercise')
 def desc_exercise():
