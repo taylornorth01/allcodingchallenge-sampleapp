@@ -9,15 +9,16 @@ import Typography from '@material-ui/core/Typography';
 import axios from 'axios';
 import { makeStyles } from '@material-ui/core/styles';
 
+
 function App() {
   // const [data, setData] = useState([{"id": 1, "employee_id": 6298, "month": "January", "exercise_time": 224, "social_interaction_time": 60, "work_time": 2220, "sleep_time": 2100}, {"id": 2, "employee_id": 6299, "month": "January", "exercise_time": 224, "social_interaction_time": 60, "work_time": 2220, "sleep_time": 2100}]);
   
   const useStyles = makeStyles({
     root: { width: '80%', overflowY: "auto" },
     table: {
-      minWidth: 650,
+      minWidth: '2300px',
       height: '500px',
-      overflowY: "hidden",
+      overflowY: "",
       top: "100px"
     },
   });
@@ -52,16 +53,21 @@ function App() {
     <ButtonAppBar/>
     <Grid container spacing={1}>
     <Grid item xs={12} sm={6} className={classes.table}>
-    <BasicTable />
+    <div >
+      <BasicTable className={classes.table}/>
+    </div>
+    
       </Grid>
         <Grid item xs={12} sm={6}>
         <Typography variant="h4">
-        Progress Chart
+        {/* Progress Chart */}
       </Typography>
-        <Example/>
+        {/* <Example/> */}
         </Grid>
         </Grid>
-        <CustomizedTimeline/>
+
+        
+        
     </div>
   );
 }

@@ -34,6 +34,7 @@ export function ButtonAppBar() {
           <Typography variant="h6" className={classes.title}>
             Mental Health App
           </Typography>
+          <img src="https://pbs.twimg.com/profile_images/1268114713235390465/sVGCB7y2_400x400.jpg" width="75" height="75"></img>
         </Toolbar>
       </AppBar>
     </div>

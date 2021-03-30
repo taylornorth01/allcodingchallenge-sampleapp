@@ -8,7 +8,16 @@ import TableRow from "@material-ui/core/TableRow";
 
 import ArrowDropDownIcon from "@material-ui/icons/ArrowDropDown";
 import ArrowDropUpIcon from "@material-ui/icons/ArrowDropUp";
+import NightsStayIcon from "@material-ui/icons/NightsStay";
+import EmojiPeopleIcon from "@material-ui/icons/EmojiPeople";
+import SportsBasketballIcon from "@material-ui/icons/SportsBasketball";
+import ComputerIcon from '@material-ui/icons/Computer';
 import Button from '@material-ui/core/Button';
+import ButtonGroup from '@material-ui/core/ButtonGroup';
+
+
+
+
 
 import axios from "axios";
 
@@ -25,9 +34,9 @@ export function BasicTable() {
 
   const [table, setTable] = useState([]);
   const [tableLoad, setTableLoad] = useState(false);
-  const [page, setPage] = useState([0]);
-  const [curURL, setCurURL] = useState(["http://localhost:5000/"]);
-  const [total, setTotal] = useState([]);
+  const [page, setPage] = useState(0);
+  const [curURL, setCurURL] = useState("http://localhost:5000/" + page);
+  const [total, setTotal] = useState();
 
   const url = curURL;
   useEffect(async () => {
@@ -47,6 +56,7 @@ export function BasicTable() {
   }, [tableLoad]);
 
   const getData = async (_url) => {
+    console.log(_url);
     const result = await axios({
       url: _url,
       method: "GET",
@@ -62,17 +72,77 @@ export function BasicTable() {
     setTableLoad(true);
   };
 
+  const decideColourMoon = (value) => {
+    if (value >= 15000) {
+      return { color: "green" };
+    } else if (value >= 10000) {
+      return { color: "orange" };
+    } else {
+      return { color: "red" };
+    }
+  };
+
+  const decideColourWork = (value) => {
+    if (value >= 12000) {
+        return { color: "red" };
+    } else if (value >= 11000) {
+      return { color: "orange" };
+    } else {
+      return { color: "green" };
+    }
+  };
+
+  const decideColourSocial = (value) => {
+    if (value >= 1200) {
+      return { color: "green" };
+    } else if (value >= 600) {
+      return { color: "orange" };
+    } else {
+      return { color: "red" };
+    }
+  };
+
+  const decideColourSport = (value) => {
+    if (value >= 3500) {
+      return { color: "green" };
+    } else if (value >= 2000) {
+      return { color: "orange" };
+    } else {
+      return { color: "red" };
+    }
+  };
+
   const columns = (_table) => {
     const data = _table;
     return data.map((row) => (
-      <TableRow key={row.employee_id}>
+      <TableRow key={row.id}>
         <TableCell component="th" scope="row">
           {row.employee_id}
         </TableCell>
-        <TableCell align="right">{row.exercise_time}</TableCell>
-        <TableCell align="right">{row.sleep_time}</TableCell>
-        <TableCell align="right">{row.social_interaction_time}</TableCell>
-        <TableCell align="right">{row.work_time}</TableCell>
+        <TableCell align="right">
+          <SportsBasketballIcon
+            style={decideColourSport(row.exercise_time)}
+          ></SportsBasketballIcon>
+        </TableCell>
+        <TableCell align="centre">{row.exercise_time}</TableCell>
+        <TableCell align="right">
+          <NightsStayIcon
+            style={decideColourMoon(row.sleep_time)}
+          ></NightsStayIcon>
+        </TableCell>
+        <TableCell align="centre">{row.sleep_time}</TableCell>
+        <TableCell align="right">
+          <EmojiPeopleIcon
+            style={decideColourSocial(row.social_interaction_time)}
+          ></EmojiPeopleIcon>
+        </TableCell>
+        <TableCell align="centre">{row.social_interaction_time}</TableCell>
+        <TableCell align="right">
+          <ComputerIcon
+            style={decideColourWork(row.work_time)}
+          ></ComputerIcon>
+        </TableCell>
+        <TableCell align="centre">{row.work_time}</TableCell>
       </TableRow>
     ));
   };
@@ -90,59 +160,152 @@ export function BasicTable() {
     }
   };
 
-    const getAsc = () => {
-        setCurURL("http://localhost:5000/asc_exercise_pag/");
-        getData(curURL + page)
-    };
+  const getAscExercise = () => {
+    setCurURL("http://localhost:5000/asc_exercise_pag/");
+    setPage(0);
+    getData(curURL + page);
+  };
 
-  const asc = () => {
+  const ascExercise = () => {
     return (
-      <a onClick={getAsc}>
+      <a onClick={getAscExercise}>
         <ArrowDropDownIcon></ArrowDropDownIcon>
       </a>
     );
   };
 
-    const getDesc = () => {
-        setCurURL("http://localhost:5000/desc_exercise_pag/");
-        getData(curURL + page)
-    };
+  const getDescExercise = () => {
+    setCurURL("http://localhost:5000/desc_exercise_pag/");
+    setPage(0);
+    getData(curURL + page);
+  };
 
-  const desc = () => {
+  const descExercise = () => {
     return (
-      <a onClick={getDesc}>
+      <a onClick={getDescExercise}>
         <ArrowDropUpIcon></ArrowDropUpIcon>
       </a>
     );
   };
 
-    const getTotal = async () => {
-        const result = await axios({
-        url: "http://localhost:5000/total_records",
-        method: "GET",
-        headers: {
-            "Content-Type": "application/json",
-            "Access-Control-Allow-Origin": "*",
-        },
-            responseType: "json",
-        });
-        setTotal(Math.ceil(result.data / 7));
-        console.log(total);
-    };
+  const getAscSleep = () => {
+    setCurURL("http://localhost:5000/asc_sleep_pag/");
+    setPage(0);
+    getData(curURL + page);
+  };
 
-    const paginate_next = () => {
-        if (page >= 0) {
-            setPage(page + 1)
-            getData(curURL + page)
-        }
-    }
+  const ascSleep = () => {
+    return (
+      <a onClick={getAscSleep}>
+        <ArrowDropDownIcon></ArrowDropDownIcon>
+      </a>
+    );
+  };
 
-    const paginate_prev = () => {
-        if (page <= total) {
-            setPage(page - 1)
-            getData(curURL + page)
-        }
+  const getDescSleep = () => {
+    setCurURL("http://localhost:5000/desc_sleep_pag/");
+    setPage(0);
+    getData(curURL + page);
+  };
+
+  const descSleep = () => {
+    return (
+      <a onClick={getDescSleep}>
+        <ArrowDropUpIcon></ArrowDropUpIcon>
+      </a>
+    );
+  };
+
+  const getAscSocial = () => {
+    setCurURL("http://localhost:5000/asc_social_pag/");
+    setPage(0);
+    getData(curURL + page);
+  };
+
+  const ascSocial = () => {
+    return (
+      <a onClick={getAscSocial}>
+        <ArrowDropDownIcon></ArrowDropDownIcon>
+      </a>
+    );
+  };
+
+  const getDescSocial = () => {
+    setCurURL("http://localhost:5000/desc_social_pag/");
+    setPage(0);
+    getData(curURL + page);
+  };
+
+  const descSocial = () => {
+    return (
+      <a onClick={getDescSocial}>
+        <ArrowDropUpIcon></ArrowDropUpIcon>
+      </a>
+    );
+  };
+
+  const getAscWork = () => {
+    setCurURL("http://localhost:5000/asc_work_pag/");
+    setPage(0);
+    getData(curURL + page);
+  };
+
+  const ascWork = () => {
+    return (
+      <a onClick={getAscWork}>
+        <ArrowDropDownIcon></ArrowDropDownIcon>
+      </a>
+    );
+  };
+
+  const getDescWork = () => {
+    setCurURL("http://localhost:5000/desc_work_pag/");
+    setPage(0);
+    getData(curURL + page);
+  };
+
+  const descWork = () => {
+    return (
+      <a onClick={getDescWork}>
+        <ArrowDropUpIcon></ArrowDropUpIcon>
+      </a>
+    );
+  };
+
+  const getTotal = async () => {
+    const result = await axios({
+      url: "http://localhost:5000/total_records",
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+        "Access-Control-Allow-Origin": "*",
+      },
+      responseType: "json",
+    });
+    setTotal(Math.ceil(result.data / 12) - 1);
+    console.log("total:", total);
+  };
+
+  const paginate_next = () => {
+    console.log("next", page);
+    var nextPage = Number(page) + 1;
+    console.log("nextPage:", nextPage);
+    console.log(total);
+    if (page < total) {
+      setPage(nextPage);
+      getData(curURL + nextPage);
     }
+  };
+
+  const paginate_prev = () => {
+    console.log("prev", page);
+    var prevPage = Number(page) - 1;
+    console.log("prevPage:", prevPage);
+    if (page > 0) {
+      setPage(prevPage);
+      getData(curURL + prevPage);
+    }
+  };
 
   return (
     <Table className={classes.root} aria-label="simple table">
@@ -150,21 +313,35 @@ export function BasicTable() {
         <TableRow>
           <TableCell>Employee ID</TableCell>
           <TableCell align="right">
-            {asc()}
-            {desc()}Exercise time
+            {descExercise()}
+            {ascExercise()}
           </TableCell>
-          <TableCell align="right">Sleep</TableCell>
-          <TableCell align="right">Social</TableCell>
-          <TableCell align="right">work_time</TableCell>
+          <TableCell align="centre">Exercise Time</TableCell>
+          <TableCell align="right">
+            {descSleep()}
+            {ascSleep()}
+          </TableCell>
+          <TableCell align="centre">Sleep</TableCell>
+          <TableCell align="right">
+            {descSocial()}
+            {ascSocial()}
+          </TableCell>
+          <TableCell align="centre">Social</TableCell>
+          <TableCell align="right">
+            {descWork()}
+            {ascWork()}
+            
+          </TableCell>
+          <TableCell align="centre">Work Time</TableCell>
         </TableRow>
       </TableHead>
       <TableBody>{loadColumns(table)}</TableBody>
-      <div>
-        <button onClick={paginate_prev}>PREVIOUS</button>
-        <button onClick={paginate_next}>NEXT</button>
-      </div>
-      
+
+      <ButtonGroup variant="contained" color="primary" aria-label="contained primary button group">
+        <Button onClick={paginate_prev}>PREVIOUS</Button>
+        <Button>Page: {page + 1}</Button>
+        <Button onClick={paginate_next}>NEXT</Button>
+        </ButtonGroup>
     </Table>
-    
   );
 }
