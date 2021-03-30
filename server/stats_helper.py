@@ -16,7 +16,6 @@ class StatsHelper():
         result = self.database.fetch_all("SELECT * FROM dayroutine limit 0,7")
         return result
 
-
     def join_all(self):
         result = self.database.fetch_all("SELECT * FROM dayroutine as a left join employeedata b on a.employee_id = b.employee_id")
         return result
