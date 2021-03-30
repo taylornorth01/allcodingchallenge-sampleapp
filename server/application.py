@@ -23,6 +23,10 @@ def employee():
 def alldata():
     return json.dumps(stats_helper.join_all())
 
+@app.route('/asc_exercise')
+def asc_exercise():
+    return json.dumps(stats_helper.asc_exercise())
+
 
 print("### Application started...")
 

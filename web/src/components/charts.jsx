@@ -7,6 +7,7 @@ const data = [
     sleep: 4000,
     exercise: 2400,
     amt: 2400,
+    stuff: 1200
   },
   {
     name: 'Page B',
@@ -64,8 +65,11 @@ export const Example = () => {
           <YAxis />
           <Tooltip />
           <Legend />
+
           <Bar dataKey="exercise" stackId="a" fill="#8884d8" />
+          <Bar dataKey="stuff" stackId="a" fill="#8834d8" />
           <Bar dataKey="sleep" stackId="a" fill="#82ca9d" />
+
         </BarChart>
     );
 }

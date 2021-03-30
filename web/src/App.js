@@ -24,10 +24,10 @@ function App() {
   
   const classes = useStyles();
   
-  
+  /*
   const [data, setData] = useState([])
   const [dataLoad, setDataLoad] = useState(false)
-    const url = 'http://localhost:5000/'
+    const url = 'http://localhost:5000/employee'
     useEffect(async () => {
       const result =  await axios({
         url: url,
@@ -43,7 +43,7 @@ function App() {
       console.log(data)
       setDataLoad(true);
     },[dataLoad]);
-
+    */
 
 
   return (
@@ -52,7 +52,7 @@ function App() {
     <ButtonAppBar/>
     <Grid container spacing={1}>
     <Grid item xs={12} sm={6} className={classes.table}>
-    <BasicTable data={data}/>
+    <BasicTable />
       </Grid>
         <Grid item xs={12} sm={6}>
         <Typography variant="h4">

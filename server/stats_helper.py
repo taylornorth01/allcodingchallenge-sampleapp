@@ -20,6 +20,10 @@ class StatsHelper():
         result = self.database.fetch_all("SELECT * FROM dayroutine as a left join employeedata b on a.employee_id = b.employee_id")
         return result
 
+    def asc_exercise(self):
+        result = self.database.fetch_all("SELECT * FROM dayroutine ORDER BY exercise_time ASC")
+        return result
+
     # HINT: You can define more queries here, along with some python logic to calculate!
     def calculate_another_stat(self):
       # all_rows = self.database.fetch_all("")
