@@ -16,7 +16,7 @@ function App() {
   const useStyles = makeStyles({
     root: { width: '80%', overflowY: "auto" },
     table: {
-      minWidth: '2300px',
+      minWidth: '2400px',
       height: '500px',
       overflowY: "",
       top: "100px"
