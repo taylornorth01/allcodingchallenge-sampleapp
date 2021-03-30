@@ -24,6 +24,7 @@ export function BasicTable() {
 
   const [table, setTable] = useState([])
   const [tableLoad, setTableLoad] = useState(false)
+  const [page, setPage] = useState([1])
 
   const url = 'http://localhost:5000/'
     useEffect(async () => {
@@ -102,7 +103,8 @@ export function BasicTable() {
   }
 
   const getDesc = () => {
-    getData('http://localhost:5000/desc_exercise');
+      console.log(page)
+    getData('http://localhost:5000/desc_exercise_pag/' + page);
   }
 
   const desc = () => {

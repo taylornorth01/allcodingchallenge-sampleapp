@@ -27,6 +27,10 @@ def alldata():
 def asc_exercise():
     return json.dumps(stats_helper.asc_exercise())
 
+@app.route('/desc_exercise_pag/<int:page_num>')
+def desc_exercise_pag(page_num):
+    return json.dumps(stats_helper.desc_exercise_pag(8, page_num))
+
 @app.route('/desc_exercise')
 def desc_exercise():
     return json.dumps(stats_helper.desc_exercise())
